@@ -11,3 +11,6 @@ gem 'faraday'
 
 # Ruby Testing Framework
 gem 'rspec'
+
+# SDK documentation
+gem 'yard'

@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'v1/services/movie'
+require 'v1/services/movie_service'
 
 RSpec.describe LotrSDK::V1::MovieService do
   before(:all) do

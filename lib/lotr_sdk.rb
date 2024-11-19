@@ -1,6 +1,6 @@
 require_relative 'v1/client'
-require_relative 'v1/services/movie'
-require_relative 'v1/services/quote'
+require_relative 'v1/services/movie_service'
+require_relative 'v1/services/quote_service'
 
 module LotrSDK
   def self.version(version_number = 'v1')

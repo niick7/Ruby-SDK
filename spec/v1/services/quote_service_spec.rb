@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'v1/services/quote'
+require 'v1/services/quote_service'
 
 RSpec.describe LotrSDK::V1::QuoteService do
   before(:all) do
