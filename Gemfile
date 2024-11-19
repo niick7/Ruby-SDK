@@ -8,3 +8,6 @@ gem 'dotenv'
 # such as Net::HTTP, Typhoeus, Patron, Excon, HTTPClient, and more
 # https://github.com/lostisland/faraday
 gem 'faraday'
+
+# Ruby Testing Framework
+gem 'rspec'
