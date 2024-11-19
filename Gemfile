@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+ruby '~> 3.3.0'
+
 # Dotenv will use the .env file for configuration. You can flexibly change your configuration in AWS, Azure...
 # https://www.rubydoc.info/gems/dotenv-rails/2.1.1
 gem 'dotenv'
