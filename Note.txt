@@ -1,0 +1,7 @@
+1. The Sorting work incorrectly then I didn't apply to the SDK yet.
+Details:
+ + https://the-one-api.dev/v2/quote?sort=name:asc : won't work
+ + https://the-one-api.dev/v2/character?sort=name:asc : work correctly
+
+2. Filtering does not work with the /movie/{id}/quote.
+Details: https://the-one-api.dev/v2/movie/5cd95395de30eff6ebccde5d/quote?character=a return all records.
