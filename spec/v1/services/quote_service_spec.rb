@@ -23,6 +23,14 @@ RSpec.describe LotrSDK::V1::QuoteService do
       expect(response['docs']).to all(include('character'))
       expect(response['docs']).to all(satisfy { |quote| quote['character'] == '5cd99d4bde30eff6ebccfc15' })
     end
+
+    # Edge Case: Empty response from the API
+    it 'handles empty quote list response' do
+      options = { limit: 1000, offset: 1000, movie: "invalid name" } # Offset and limit unlikely to return data
+      response = @quote_service.all(options)
+      expect(response).to have_key('docs')
+      expect(response['docs']).to eq([])
+    end
   end
 
   describe '#find' do
@@ -38,6 +46,20 @@ RSpec.describe LotrSDK::V1::QuoteService do
       # Validate that the quote details are correct
       expect(response['docs'].first).to include('dialog')
       expect(response['docs'].first).to include('character')
+    end
+
+    # Edge Case: Invalid quote ID
+    it 'handles invalid quote ID' do
+      invalid_id = 'invalid_id'
+      response = @quote_service.find(invalid_id)
+      expect(response['success']).to eq(false)
+    end
+
+    # Edge Case: Non-existent quote ID
+    it 'handles non-existent quote ID' do
+      non_existent_id = '5cd96e05de30eff6ebcce7z9' # Example of a non-existent ID
+      response = @quote_service.find(non_existent_id)
+      expect(response['success']).to eq(false)
     end
   end
 end

@@ -53,6 +53,14 @@ RSpec.describe LotrSDK::V1::MovieService do
       # Ensure that each movie in the response has won at least one Academy Award
       expect(response['docs']).to all(include('academyAwardWins'))
     end
+
+    # Edge Case: Empty response from the API
+    it 'handles empty movie list response' do
+      options = { limit: 1000, page: 1000 } # Page and limit unlikely to return data
+      response = @movie_service.all(options)
+      expect(response).to have_key('docs')
+      expect(response['docs']).to eq([])
+    end
   end
 
   describe '#find' do
@@ -61,6 +69,20 @@ RSpec.describe LotrSDK::V1::MovieService do
       response = @movie_service.find(movie_id)
       expect(response).to have_key('docs')
       expect(response['docs'].first['_id']).to eq(movie_id)
+    end
+
+    # Edge Case: Invalid movie ID
+    it 'handles invalid movie ID' do
+      invalid_id = 'invalid_id'
+      response = @movie_service.find(invalid_id)
+      expect(response['success']).to eq(false)
+    end
+
+    # Edge Case: Non-existent movie ID
+    it 'handles non-existent movie ID' do
+      non_existent_id = '5cd95395de30eff6ebccde5z'
+      response = @movie_service.find(non_existent_id)
+      expect(response['success']).to eq(false)
     end
   end
 
