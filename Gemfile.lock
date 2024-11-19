@@ -9,6 +9,8 @@ GEM
       logger
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
+    faraday-retry (2.2.1)
+      faraday (~> 2.0)
     json (2.8.2)
     logger (1.6.1)
     net-http (0.5.0)
@@ -36,6 +38,7 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   faraday
+  faraday-retry
   rspec
   yard
 
