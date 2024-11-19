@@ -7,8 +7,8 @@ module LotrSDK
         @client = Client.new
       end
 
-      def all
-        @client.get('quote')
+      def all(options = {})
+        @client.get('quote', options)
       end
 
       def find(id)

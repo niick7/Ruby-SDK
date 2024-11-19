@@ -7,16 +7,16 @@ module LotrSDK
         @client = Client.new
       end
 
-      def all
-        @client.get('movie')
+      def all(options = {})
+        @client.get('movie', options)
       end
 
       def find(id)
         @client.get("movie/#{id}")
       end
 
-      def quotes(id)
-        @client.get("movie/#{id}/quote")
+      def quotes(id, options = {})
+        @client.get("movie/#{id}/quote", options)
       end
     end
   end
